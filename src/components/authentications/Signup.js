@@ -65,7 +65,7 @@ const Signup = () => {
     setLoading(true);
     if (!name || !email || !password || !confirmpassword) {
       toast({
-        title: "Please fill all the feilds",
+        title: "Please fill all the fields",
         status: 'warning',
         duration: 5000,
         isClosable: true,
@@ -90,7 +90,7 @@ const Signup = () => {
           "Content-type": "application/json",
         },
       };
-      const { data } = await axios.post("api/user",
+      const { data } = await axios.post("/api/user",
         { name, email, password, pic },
         config);
       
@@ -109,7 +109,8 @@ const Signup = () => {
       
     } catch (error) {
        toast({
-        title: "Error occured",
+         title: "Error occured",
+         description:error.response.data.message,
         status: 'error',
         duration: 5000,
         isClosable: true,

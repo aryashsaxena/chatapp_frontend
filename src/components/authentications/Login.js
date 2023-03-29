@@ -5,8 +5,8 @@ import axios from 'axios';
 
 const Login = () => {
   const [show,setShow]=useState(false);
-    const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+    const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const history = useHistory();
@@ -33,9 +33,7 @@ const Login = () => {
           "Content-type": "application/json",
         },
       };
-      const { data } = await axios.post("api/user/login",
-        { email, password },
-        config);
+      const { data } = await axios.post("/api/user/login",{ email, password },config);
       
       toast({
         title: "Login Successful !!",

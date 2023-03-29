@@ -9,3 +9,15 @@
     background-color: rgb(247, 244, 240);
     background-size:contain;
 }
+
+::-webkit-scrollbar{
+    width: 0px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: rgb(136,136,136,0.281);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #555;
+}
