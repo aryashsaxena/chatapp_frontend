@@ -7,7 +7,7 @@ import ProfileModle from './ProfileModle';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ChatLoading from '../../ChatLoading';
-import UserListItem from '../../UserAvtar/UserListItem';
+import UserListItem from '../UserAvtar/UserListItem';
 
 const SideDrawer = () => {
   const [search, setSearch] = useState();
