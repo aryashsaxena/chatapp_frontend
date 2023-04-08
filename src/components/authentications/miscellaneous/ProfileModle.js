@@ -19,7 +19,8 @@ const ProfileModle = ({ user, children }) => {
         <ModalContent h={'410px'}>
                     <ModalHeader
                         fontSize={'40px'} fontFamily="Work sans" display={'flex'} justifyContent='center'
-                    >{user.name}</ModalHeader>
+            >
+              {user.name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody display={'flex'} flexDir='column' alignItems={'center'} justifyContent='space-between'>
                         <Image borderRadius={"full"} boxSize='150px' src={user.pic} alt={user.name} />

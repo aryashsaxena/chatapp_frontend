@@ -14,7 +14,7 @@ const GroupChatModal = ({ children }) => {
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
     const toast = useToast();
-    const { user, chats, setChats }= ChatState();
+    const { user, Chats, setChats }= ChatState();
 
     const handleSearch = async(query) => {
         setSearch(query);
@@ -73,7 +73,7 @@ const GroupChatModal = ({ children }) => {
                 config
             );
 
-            setChats([data, ...chats]);
+            setChats([data, ...Chats]);
             onClose();
 
             toast({

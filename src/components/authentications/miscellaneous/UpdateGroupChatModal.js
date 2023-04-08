@@ -6,14 +6,14 @@ import { ChatState } from '../../../Context/ChatProvider';
 import UserBadgeItem from '../UserAvtar/UserBadgeItem';
 import UserListItem from '../UserAvtar/UserListItem';
 
-const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
+const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain ,fetchMessages}) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { selectedChat, setSelectedChat, user } = ChatState();
-    const { groupChatName, setGroupChatName } = useState();
-    const { search, setSearch } = useState("");
-    const { searchResult, setSearchResult } = useState([]);
-    const { loading, setLoading } = useState(false);
-    const { renameLoading, setRenameLoading } = useState(false);
+    const [ groupChatName, setGroupChatName ] = useState();
+    const [ search, setSearch ] = useState("");
+    const [ searchResult, setSearchResult ] = useState([]);
+    const [ loading, setLoading ] = useState(false);
+    const [ renameLoading, setRenameLoading ] = useState(false);
     
     const toast = useToast();
     const handleRemove = async (user1) => {
@@ -38,13 +38,14 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
                 },
             };
 
-            const { data } = await axios.put('/api/chat.groupremove', {
+            const { data } = await axios.put('/api/chat/groupremove', {
                 chatId: selectedChat._id,
                 userId: user1._id,
             }, config);
             
             user1._id === user._id ? setSelectedChat() : setSelectedChat(data);
             setFetchAgain(!fetchAgain);
+            fetchMessages();
             setLoading(false);
         } catch (error) {
             toast({
@@ -90,7 +91,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
                 },
             };
 
-            const { data } = await axios.put('/api/chat.groupadd', {
+            const { data } = await axios.put('/api/chat/groupadd', {
                 chatId: selectedChat._id,
                 userId: user1._id,
             }, config);

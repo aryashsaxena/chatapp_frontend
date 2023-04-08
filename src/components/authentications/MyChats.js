@@ -10,7 +10,7 @@ import GroupChatModal from './miscellaneous/GroupChatModal';
 const MyChats = ({fetchAgain}) => {
   const [loggedUser, setLoggedUser] = useState();
   
-  const {selectedChat, setSelectedChat, user, chats, setChats} = ChatState();
+  const {selectedChat, setSelectedChat, user, Chats, setChats} = ChatState();
 
   const toast = useState();
 
@@ -70,12 +70,12 @@ const MyChats = ({fetchAgain}) => {
     p={3} bg="#F8F8F8" w={"100%"}
     borderRadius='lg' overflowY={'hidden'}
     >
-      {chats ? (
+      {Chats ? (
         <Stack overflowY={"scroll"}>
-          {chats.map((chat) => (
+          {Chats.map((chat) => (
             <Box
               onClick={() => setSelectedChat(chat)}
-              cursor="pointer" bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
+              cursor="pointer" bg={selectedChat === chat ? "#F8F8F8" : "#E8E8E8"}
               color={selectedChat === chat ? "white" : "black"}
               px={3} py={2} borderRadius="lg" 
               key={chat._id}

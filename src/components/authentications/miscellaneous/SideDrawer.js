@@ -10,8 +10,8 @@ import ChatLoading from '../../ChatLoading';
 import UserListItem from '../UserAvtar/UserListItem';
 
 const SideDrawer = () => {
-  const [search, setSearch] = useState();
-  const [searchResult, setSearchResult] = useState();
+  const [search, setSearch] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState();
   const { user , setSelectedChat ,Chats ,setChats } = ChatState();
@@ -141,7 +141,7 @@ const SideDrawer = () => {
                 <DrawerHeader borderBottomWidth={'1px'}>Search Users</DrawerHeader>
 
            <DrawerBody>
-          <Box display={'flex'} pb='2'>
+          <Box display={'flex'} pb={2} >
             <Input placeholder='Search by name or email' mr={2} value={search}
               onChange={(e) => setSearch(e.target.value)} />
               <Button  onClick={handleSearch}>Go</Button>
