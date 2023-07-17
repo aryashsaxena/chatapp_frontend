@@ -9,7 +9,7 @@ const ChatProvider = ({ children }) => {
     const [selectedChat, setSelectedChat] = useState();
     const [Chats, setChats] = useState([]);
     const [reload,setReload] = useState(false)
-
+    const url = "https://chatapp-8vkp.onrender.com";
     
     
     useEffect(() => {
@@ -27,7 +27,8 @@ const ChatProvider = ({ children }) => {
             Chats, 
             setReload,
             reload,
-            setChats
+            setChats,
+            url
             }}>
         {children}
     </ChatContext.Provider>
