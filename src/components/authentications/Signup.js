@@ -92,7 +92,7 @@ const Signup = () => {
     // sending user data to backend
     try {
       const config = {headers: {"Content-type": "application/json"}};
-      const { data } = await axios.post(url+"/api/user",{ name, email, password, pic },config);
+      const { data } = await axios.post(url+"/api/user/",{ name, email, password, pic },config);
       // notify for succesfull registration
       toast({
         title: "Registration Successful !!",
