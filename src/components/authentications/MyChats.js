@@ -75,7 +75,7 @@ const MyChats = ({fetchAgain}) => {
           {Chats.map((chat) => (
             <Box
               onClick={() => setSelectedChat(chat)}
-              cursor="pointer" bg={selectedChat === chat ? "#F8F8F8" : "#E8E8E8"}
+              cursor="pointer" bg={selectedChat === chat ? "#9c9c9c" : "#E8E8E8"}
               color={selectedChat === chat ? "white" : "black"}
               px={3} py={2} borderRadius="lg" 
               key={chat._id}

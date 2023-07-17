@@ -2,6 +2,7 @@ import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, u
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { ChatState } from '../../Context/ChatProvider';
 
 const Signup = () => {
 
@@ -14,8 +15,9 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const history = useHistory();
+  const {setReload,reload} = ChatState();
 
-    const handleClick = () => setShow(!show);
+  const handleClick = () => setShow(!show);
 
   const postDetails = (pics) => { 
     setLoading(true);
@@ -63,6 +65,7 @@ const Signup = () => {
     
   const submitHandler = async () => {
     setLoading(true);
+    // checking for empty fields
     if (!name || !email || !password || !confirmpassword) {
       toast({
         title: "Please fill all the fields",
@@ -74,6 +77,7 @@ const Signup = () => {
       setLoading(false);
       return;
     }
+    // checking for password match
     if (password !== confirmpassword) {
       toast({
         title: "Password Don't match",
@@ -84,16 +88,11 @@ const Signup = () => {
       });
       return;
     }
+    // sending user data to backend
     try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-      const { data } = await axios.post("/api/user",
-        { name, email, password, pic },
-        config);
-      
+      const config = {headers: {"Content-type": "application/json"}};
+      const { data } = await axios.post("/api/user",{ name, email, password, pic },config);
+      // notify for succesfull registration
       toast({
         title: "Registration Successful !!",
         status: 'success',
@@ -101,12 +100,12 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-
+      // setting the userinfo to local storage
       localStorage.setItem('userInfo', JSON.stringify(data));
-
+      setReload(!reload);
       setLoading(false);
       history.push('/chats');
-      
+      // handling error
     } catch (error) {
        toast({
          title: "Error occured",
