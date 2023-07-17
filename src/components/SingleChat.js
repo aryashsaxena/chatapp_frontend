@@ -29,6 +29,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [socketConnected, setsocketConnected] = useState(false);
   const [typing, setTyping] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+   const { url } = ChatState();
 
   const { user, selectedChat, setSelectedChat } = ChatState();
 
@@ -44,7 +45,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       setLoading(true);
 
       const { data } = await axios.get(
-        `/api/message/${selectedChat._id}`,
+       url+ `/api/message/${selectedChat._id}`,
         config
       );
 
@@ -109,7 +110,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
         setNewMessage("");
         const { data } = await axios.post(
-          "/api/message",
+          url+"/api/message",
           {
             content: newMessage,
             chatId: selectedChat._id,

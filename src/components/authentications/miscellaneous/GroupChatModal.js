@@ -14,7 +14,8 @@ const GroupChatModal = ({ children }) => {
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
     const toast = useToast();
-    const { user, Chats, setChats }= ChatState();
+    const { user, Chats, setChats } = ChatState();
+     const { url } = ChatState();
 
     const handleSearch = async(query) => {
         setSearch(query);
@@ -29,7 +30,7 @@ const GroupChatModal = ({ children }) => {
                 },
             };
 
-            const { data } = await axios.get(`/api/user?search=${search}`, config);
+            const { data } = await axios.get(url+`/api/user?search=${search}`, config);
             console.log(data);
             console.log(user.token);
             setLoading(false);
@@ -66,7 +67,7 @@ const GroupChatModal = ({ children }) => {
                 },
             };
 
-            const { data } = await axios.post('/api/chat/group', {
+            const { data } = await axios.post(url+'/api/chat/group', {
                 name: groupChatName,
                 users: JSON.stringify(selectedUsers.map((u) => u._id)),
             },

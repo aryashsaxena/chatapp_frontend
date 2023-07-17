@@ -9,6 +9,7 @@ import GroupChatModal from './miscellaneous/GroupChatModal';
 
 const MyChats = ({fetchAgain}) => {
   const [loggedUser, setLoggedUser] = useState();
+   const { url } = ChatState();
   
   const {selectedChat, setSelectedChat, user, Chats, setChats} = ChatState();
 
@@ -22,7 +23,7 @@ const MyChats = ({fetchAgain}) => {
         },
       };
 
-      const { data } = await axios.get('/api/chat', config);
+      const { data } = await axios.get(url+'/api/chat', config);
       setChats(data);
       console.log(data);
     } catch (error) {

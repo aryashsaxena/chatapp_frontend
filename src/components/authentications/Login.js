@@ -11,7 +11,8 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const history = useHistory();
-  const {reload,setReload} = ChatState();
+  const { reload, setReload } = ChatState();
+   const { url } = ChatState();
  
     const handleClick = () => setShow(!show);
     
@@ -35,7 +36,7 @@ const Login = () => {
           "Content-type": "application/json",
         },
       };
-      const { data } = await axios.post("/api/user/login",{ email, password },config);
+      const { data } = await axios.post(url+"/api/user/login",{ email, password },config);
       
       toast({
         title: "Login Successful !!",
