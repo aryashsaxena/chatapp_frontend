@@ -18,7 +18,7 @@ import "./style.css";
 import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 import '../styles/loader.css'
-const ENDPOINT = "https://chatapp-8vkp.onrender.com";
+const ENDPOINT = "https://chathub-b6lgxuugh-aryashsaxena.vercel.app/";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
